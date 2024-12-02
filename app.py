@@ -12,10 +12,25 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+async def root():
+    print("Root route accessed")
+    return HTMLResponse("""
+    <html>
+        <head><title>FastAPI App</title></head>
+        <body>
+            <h1>Welcome to the FastAPI Atlassian App</h1>
+            <p>Go to <a href="/hello-world">Hello World Page</a></p>
+        </body>
+    </html>
+    """)
+
+# Lifecycle endpoint to handle app installation
 @app.post("/installed")
 async def installed_handler(data: dict):
     return JSONResponse({"message": "App installed successfully"})
 
+# Serve the Hello World page
 @app.get("/hello-world")
 async def hello_world():
     return HTMLResponse("""
