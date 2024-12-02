@@ -1,7 +1,8 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
+from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-import os 
+from fastapi.staticfiles import StaticFiles
+import os
 
 app = FastAPI()
 
@@ -12,6 +13,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve static files from a "static" folder
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
 async def root():
@@ -42,6 +46,8 @@ async def hello_world():
         </body>
     </html>
     """)
+
+# Serve the atlassian-connect.json file
 @app.get("/atlassian-connect.json")
 async def get_atlassian_connect():
-    return FileResponse(os.path.join(os.getcwd(), "atlassian-connect.json"))
+    return StaticFiles(directory="static").get("/atlassian-connect.json")
