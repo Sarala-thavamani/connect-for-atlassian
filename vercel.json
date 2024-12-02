@@ -10,7 +10,7 @@
       }
     ],
     "routes": [
-      { "src": "/atlassian-connect.json", "dest": "atlassian-connect.json" },
+      { "src": "/atlassian-connect.json", "dest": "/static/atlassian-connect.json" },
       { "src": "/(.*)", "dest": "app.py" }
     ]
   }  
