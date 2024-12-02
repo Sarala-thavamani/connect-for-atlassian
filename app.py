@@ -29,7 +29,9 @@ async def root():
         </body>
     </html>
     """)
-
+    response.headers["X-Frame-Options"] = "ALLOW-FROM https://cn2.atlassian.net/"
+    response.headers["Content-Security-Policy"] = "frame-ancestors 'self' https://cn2.atlassian.net/"
+    return response
 # Lifecycle endpoint to handle app installation
 @app.post("/installed")
 async def installed_handler(data: dict):
