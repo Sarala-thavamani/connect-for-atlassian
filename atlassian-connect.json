@@ -1,0 +1,22 @@
+{
+    "key": "fastapi-hello-world",
+    "name": "FastAPI Hello World App",
+    "baseUrl": "https://<your-ngrok-url>",
+    "authentication": {
+      "type": "none"
+    },
+    "lifecycle": {
+      "installed": "/installed"
+    },
+    "modules": {
+      "generalPages": [
+        {
+          "key": "hello-world-page",
+          "url": "/hello-world",
+          "name": {
+            "value": "Hello World Page"
+          }
+        }
+      ]
+    }
+  }  
