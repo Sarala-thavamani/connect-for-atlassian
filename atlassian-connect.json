@@ -1,7 +1,7 @@
 {
     "key": "fastapi-hello-world",
     "name": "FastAPI Hello World App",
-    "baseUrl": "https://<your-ngrok-url>",
+    "baseUrl": "https://connect-for-atlassian.vercel.app/",
     "authentication": {
       "type": "none"
     },
