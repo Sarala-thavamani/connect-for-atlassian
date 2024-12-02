@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+import os 
 
 app = FastAPI()
 
@@ -41,3 +42,6 @@ async def hello_world():
         </body>
     </html>
     """)
+@app.get("/atlassian-connect.json")
+async def get_atlassian_connect():
+    return FileResponse(os.path.join(os.getcwd(), "atlassian-connect.json"))
